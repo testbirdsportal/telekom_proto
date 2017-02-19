@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Telekom prototype</title>
+        <meta name="description" content="whatever">
+        <meta name="keywords" content="html5 template, css3, one page, animations, agency, portfolio, web design">
+        <meta name="author" content="Kristof Vizy">    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style2.css">
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="js/script.js"></script>
+
+         <script src="js/huawei_reszlet.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+
+        <title>basic</title>
+        <style>
+        	#own_slider{
+	        	-webkit-appearance: none !important;
+				-moz-appearance:    none !important;
+				appearance:         none !important;
+				background-color:#858585;
+				height:2px;
+				border-radius: 0px;
+				cursor: pointer;
+				border:0px;
+				outline: none !important;
+        	}
+
+        	#own_slider a{
+	        	-webkit-appearance: none !important;
+				-moz-appearance:    none !important;
+				appearance:         none !important;
+        	}
+
+        	#slider_holder{
+	        	position: relative;
+        	}
+
+        	#slider_holder span.slider_point{
+	        	position: absolute;
+	        	width: 8px;
+			    height: 8px;
+	        	background-color: #fff;
+				border: 2px solid #646464;
+	        	-moz-border-radius: 100%;
+				border-radius: 100%;
+				top:-3px;
+				cursor: pointer;
+        	}
+
+
+
+        	.own_tooltip{
+        		transition : .5s all ease;
+        		-moz-transition:.5s all ease;
+        		-webkit-transition:.5s all ease;
+        		user-select: none;
+        		-moz-user-select: none;
+        		-webkit-user-select: none;
+        		-ms-user-select: none;
+	        	position: absolute;
+	        	height:78px;
+	        	width:280px;
+	        	top:-100px;
+	        	left:0px;
+	        	display: -webkit-box;
+			    display: -moz-box;
+			    display: -ms-flexbox;
+			    display: flex;
+			    -webkit-box-orient: vertical;
+			    -webkit-box-direction: normal;
+			    -moz-box-orient: vertical;
+			    -moz-box-direction: normal;
+			    -ms-flex-direction: column;
+			    flex-direction: column;
+			    -webkit-box-pack: center;
+			    -moz-box-pack: center;
+			    -ms-flex-pack: center;
+			    justify-content: center;
+			    text-align: left;
+			    width: 280px;
+			    bottom: 74px;
+			    color: #333;
+			    background-color: #fff;
+			    padding: 12px 14px 10px 20px;
+			    -moz-border-radius: 4px;
+			    border-radius: 4px;
+			    border: 1px solid #cac9c7;
+			    border-top: solid 1px #e0dedb;
+			    -moz-box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+			    box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+			    margin-left: -14px;
+			    font-size: 15px;
+			    font-size: 1.25rem;
+        	}
+
+        	.tooltip_top{
+	        	font-size: 16px;
+				line-height: 18px;
+				color: #e20074;
+				font-weight: bold;
+        	}
+
+        	.tooltip_egyosszeg, .tooltip_egyosszeg span
+        	{
+        		font-size: 16px;
+				line-height: 18px;
+				color: #e20074;
+				font-weight: bold;
+				display:none;
+			}
+
+        	.tooltip_center,.tooltip_center span{
+	        	font-size: 16px;
+				line-height: 18px;
+				color: #e20074;
+        	}
+
+        	.tooltip_bottom,.tooltip_bottom span{
+	        	font-size:12px;
+	        	color:#333;
+        	}
+
+        	.tooltip_arrow{
+	        	position: relative;
+			    bottom: -7px;
+			    left:0px;
+			    margin-left: -8px;
+			    display: block;
+        	}
+
+        	.tooltip-arrow:after{
+	        	content: "";
+			    width: 14px;
+			    height: 14px;
+			    border-left: 7px solid #fff;
+			    border-bottom: 7px solid transparent;
+			    border-top: 7px solid transparent;
+			    -webkit-transform: rotate(90deg);
+			    -moz-transform: rotate(90deg);
+			    transform: rotate(90deg);
+			    bottom: -13px;
+
+			    position: absolute;
+        	}
+
+        	.tooltip-arrow:before{
+	        	content: "";
+				width: 14px;
+			    height: 14px;
+			    border-left: 8px solid #bfbfbf;
+			    border-bottom: 8px solid transparent;
+			    border-top: 8px solid transparent;
+			    -webkit-transform: rotate(90deg);
+			    -moz-transform: rotate(90deg);
+			    transform: rotate(90deg);
+			    bottom: -16px;
+
+			    position: absolute;
+        	}
+
+        	.marker{
+	        	width:30px;
+	        	height:30px;
+	        	position: absolute;
+	        	left:-9px;
+	        	top:-13px;
+	        	display: block;
+	        	z-index: 999999;
+	        	background-color:#e20074;
+	        	border-radius: 25px;
+	        	display: block !important;
+        	}
+
+            input[type=range]::-webkit-slider-thumb{
+        		opacity: 0;
+		        display:block !important;
+
+			}
+
+
+        	.slider_point_2{
+	        	margin-left:100%;
+        	}
+
+        	.marker .glyphicon{
+	        	color:white !important;
+	        	margin-top:7px;
+
+        	}
+        </style>
+        <style>
+        	.top_egyosszeg{
+	        	font-size: 37px;
+			    line-height: 50px;
+			    color: #e20074;
+			    font-weight: bold;
+			    display: none;
+        	}
+
+        	#own_slider2{
+	        	-webkit-appearance: none !important;
+				-moz-appearance:    none !important;
+				appearance:         none !important;
+				background-color:#858585;
+				height:2px;
+				border-radius: 0px;
+				cursor: pointer;
+				border:0px;
+				outline: none !important;
+        	}
+
+        	#own_slider2 a{
+	        	-webkit-appearance: none !important;
+				-moz-appearance:    none !important;
+				appearance:         none !important;
+        	}
+
+        	#slider_holder2{
+	        	position: relative;
+        	}
+
+        	#slider_holder2 span.slider_point2{
+	        	position: absolute;
+	        	width: 8px;
+			    height: 8px;
+	        	background-color: #fff;
+				border: 2px solid #646464;
+	        	-moz-border-radius: 100%;
+				border-radius: 100%;
+				top:-3px;
+				cursor: pointer;
+        	}
+
+
+
+        	.own_tooltip2{
+        		transition : .5s all ease;
+        		-moz-transition:.5s all ease;
+        		-webkit-transition:.5s all ease;
+        		user-select: none;
+        		-moz-user-select: none;
+        		-webkit-user-select: none;
+        		-ms-user-select: none;
+	        	position: absolute;
+	        	height:180px;
+	        	top:-205px;
+	        	display: -webkit-box;
+			    display: -moz-box;
+			    display: -ms-flexbox;
+			    display: flex;
+			    -webkit-box-orient: vertical;
+			    -webkit-box-direction: normal;
+			    -moz-box-orient: vertical;
+			    -moz-box-direction: normal;
+			    -ms-flex-direction: column;
+			    flex-direction: column;
+			    -webkit-box-pack: center;
+			    -moz-box-pack: center;
+			    -ms-flex-pack: center;
+			    justify-content: center;
+			    text-align: left;
+			    width: 350px;
+			    bottom: 74px;
+			    color: #333;
+			    background-color: #fff;
+			    padding: 12px 14px 10px 20px;
+			    -moz-border-radius: 4px;
+			    border-radius: 4px;
+			    border: 1px solid #cac9c7;
+			    border-top: solid 1px #e0dedb;
+			    -moz-box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+			    box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+			    margin-left: -14px;
+			    font-size: 15px;
+			    font-size: 1.25rem;
+        	}
+
+        	.tooltip_top2, .tooltip_top2 span{
+	        	font-size: 16px;
+				line-height: 18px;
+				color: #e20074;
+				font-weight: bold;
+        	}
+
+        	.tooltip_center2,.tooltip_center2 span{
+	        	font-size: 16px;
+				line-height: 18px;
+				color: #e20074;
+        	}
+
+        	.tooltip_bottom2,.tooltip_bottom2 span{
+	        	font-size:12px;
+	        	color:#333;
+        	}
+
+        	.tooltip_bottom2_0{
+	        	font-size:14px;
+        	}
+
+        	.tooltip_bottom2_1{
+	        	font-weight: bold;
+	        	font-size:16px;
+        	}
+
+        	.tooltip_bottom2_2{
+	        	font-size:14px;
+        	}
+
+        	.tooltip_bottom2_3{
+	        	font-weight: bold;
+	        	font-size:16px;
+        	}
+
+        	.tooltip_bottom2_4{
+	        	font-size:14px;
+        	}
+
+        	.tooltip_arrow2{
+	        	position: relative;
+			    bottom: -18px;
+			    left:0px;
+			    margin-left: -8px;
+			    display: block;
+        	}
+
+        	.tooltip-arrow2:after{
+	        	content: "";
+			    width: 14px;
+			    height: 14px;
+			    border-left: 7px solid #fff;
+			    border-bottom: 7px solid transparent;
+			    border-top: 7px solid transparent;
+			    -webkit-transform: rotate(90deg);
+			    -moz-transform: rotate(90deg);
+			    transform: rotate(90deg);
+			    bottom: -13px;
+
+			    position: absolute;
+        	}
+
+        	.tooltip-arrow2:before{
+	        	content: "";
+				width: 14px;
+			    height: 14px;
+			    border-left: 8px solid #bfbfbf;
+			    border-bottom: 8px solid transparent;
+			    border-top: 8px solid transparent;
+			    -webkit-transform: rotate(90deg);
+			    -moz-transform: rotate(90deg);
+			    transform: rotate(90deg);
+			    bottom: -16px;
+
+			    position: absolute;
+        	}
+
+        	.marker2{
+	        	width:30px;
+	        	height:30px;
+	        	position: absolute;
+	        	left:70%;
+	        	top:-13px;
+	        	display: block;
+	        	z-index: 999999;
+	        	background-color:#e20074;
+	        	border-radius: 25px;
+	        	display: block !important;
+        	}
+
+            input[type=range]::-webkit-slider-thumb{
+        		opacity: 0;
+		        display:block !important;
+
+			}
+
+
+        	.slider_point_7{
+	        	margin-left:100%;
+        	}
+
+        	.marker2 .glyphicon{
+	        	color:white !important;
+	        	margin-top:7px;
+
+        	}
+
+        	input[type=radio]{
+	        	-webkit-appearance : none;
+	        	appearance:  none;
+	        	-moz-appearance: none;
+	        	width:30px;
+	        	height:30px;
+	        	border-radius: 35px;
+	        	background:white;
+	        	border:5px solid #a0a0a0;
+	        	margin-left:20px;
+	        	cursor: pointer;
+        	}
+
+        	input[type=radio]:checked{
+	        	border:5px solid #e60074;
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e60074+0,e60074+50,ffffff+51,ffffff+100 */
+				background: #e60074; /* Old browsers */
+				background: -moz-radial-gradient(center, ellipse cover,  #e60074 0%, #e60074 50%, #ffffff 51%, #ffffff 100%); /* FF3.6-15 */
+				background: -webkit-radial-gradient(center, ellipse cover,  #e60074 0%,#e60074 50%,#ffffff 51%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+				background: radial-gradient(ellipse at center,  #e60074 0%,#e60074 50%,#ffffff 51%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e60074', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        	}
+
+
+        	span.kezdo_ar{
+	        	position: absolute;
+	        	left:0px;
+	        	top:20px;
+        	}
+
+        	span.vegso_ar{
+	        	position: absolute;
+	        	left:89%;
+	        	top:20px;
+        	}
+        </style>
+    </head>
+
+<!-- BODY-->
+
+    <body>
+      <div class="wrapper">
+        <section class="header">
+          <img class="logo" src="img/ic-logo.svg">
+          <div class="menu">
+            <p>Készülékek</p>
+            <p>Szolgáltatások</p>
+            <p>Ügyintézés</p>
+          </div>
+          <img class="menu_other" src="img/menu_elem.png">
+        </section>
+      </div>
+      <div class="secondwrap">
+        <div class="container-fluid">
+          <div class="row">
+            <h1>HUAWEI P8 LITE + HUAWEI BAND A1 OKOSKARPÁNT</h1>
+
+            <div class="col-md-4 product_image">
+              <img src="img/hp8.png">
+              <div class="col-md-12 product_desc">
+                <h2>Rendeld online, díjmentesen kiszállítjuk akár 1 nap alatt.</h2>
+                <ul>
+                  <li>Android operációs rendszer</li>
+                  <li>5,2"-es érintőkijelző</li>
+                  <li>13 megapixeles hátoldali kamera</li>
+                  <li>8 megapixeles előlapi kamera</li>
+                  <li>16 GB belső tárhely (bővíthető)</li>
+              </div>
+            </div>
+
+
+            <div class="col-md-8 desc">
+              <div class="col-md-6 keszulek">
+
+                <h2 class="n1">Huawei P8 Lite</h2>
+                <ul>
+                  <li>kamatmentes részletfizetéssel</li>
+                  <li>online kedvezménnyel</li>
+                </ul>
+                <h2 class="n2 top_reszlet"><span>0</span> Ft kezdőrészlet</h2>
+                <p class="n3 top_reszlet">+ 24×<span>490</span> Ft/hó</p>
+                 <p class="top_egyosszeg"><span></span> Ft</p>
+              </div>
+
+              <div class="col-md-6 csomag">
+                <img class="plus_line" src="img/plus.png">
+
+                <h2 class="n1 dijcsomag_neve">Move M díjcsomag</h2>
+                <ul>
+                  <li>új havi díjas előfizetéssel</li>
+                  <li>2 év előfizetésre és havi költésre vállalt hűséggel</li>
+                  <li class="dijcsomag_leiras">100%-ban felhasználható havidíj</li>
+                </ul>
+                <h2 class="n2 dijcsomag_ara"><span>3840</span> Ft havi díj</h2>
+                <p class="n4">Díjcsomag részletes ismertetője</p>
+              </div>
+
+
+
+
+              <div class="col-md-6 atvetelkor">
+                <h2 class="n5">Átvételkor fizetendő:</h2>
+                <h2 class="price price_final"><span>0</span> Ft</h2>
+                 <p>készülékár <span class="kezdoreszlet">-kezdőrészlet</span></p>
+                <button class="button-green">Kosárba rakom</button>
+
+              </div>
+              <div class="col-md-6 havonta">
+                <h2 class="n5">Havonta fizetendő összesen:</h2>
+                <h2 class="price price_month"><span>4330</span> Ft/hó</h2>
+                <p>készülék törlesztőrészlet + díjcsomag havi díj</p>
+                <button class="details" data-toggle="collapse" data-target="#demo">Részletek</button>
+
+                <div id="demo" class="collapse">
+                  <div class="reszletek_keszulek_main"> <span class="reszletek_keszulek">490</span> Ft/hó készülék részlet +<br></div>
+                   <span class="reszletek_havi">3840</span> Ft/hó havi díj
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+            <div class="col-md-8 ">
+              <h3 class="n6">VÁLASZD KI, HOGY MILYEN KÉSZÜLÉKET SZERETNÉL!</h3>
+              <div class="col-md-12 color">
+                <img src="img/tipus.png">
+              </div>
+              <div>
+                <div class="delivery">
+                  <img src="img/atveheto.png">
+                </div>
+              </div>
+
+
+
+              <div class="col-md-12 tabs">
+                <div id="exTab2" class="container-fluid">
+                <ul class="nav nav-tabs ">
+                			<li class="active">
+                        <a  href="#1" data-toggle="tab">Új havi díjas előfizetéssel</a>
+                			</li>
+                			<li><a href="#2" data-toggle="tab">Meglévő előfizetéssel</a>
+                			</li>
+                			<li><a href="#3" data-toggle="tab">Domino feltöltőkártyával</a>
+                			</li>
+                      <li><a href="#4" data-toggle="tab">Előfizetés nélkül</a>
+                			</li>
+                		</ul>
+
+                			<div class="tab-content ">
+                			  <div class="tab-pane active uj_havi" id="1">
+                          <img src="img/fizetes.png">
+                           <input type="radio" name = "ar" value="egy_osszegben" > Egy összegben fizetve
+                          <input type="radio" name="ar" value="reszlet"checked="checked"> Kamatmentes részletfizetéssel
+                          <div class="row" style="margin-bottom:100px;">
+                            <img class="telefon" src="img/keszulek.png">
+                            <div class="container">
+                              <div class="price-slider">
+                                <div class="col-sm-12">
+                                  <!--<div id="slider2"></div>-->
+                                 <!-- <div id="own_slider"></div>-->
+                                 <div id="slider_holder">
+                                 	 <span class="marker">
+                                 	 	<span class="glyphicon glyphicon-triangle-left" style="margin-right:-2px;margin-left:2px;"></span>
+                                 	 	<span class="glyphicon glyphicon-triangle-right" style="margin-left:-2px"></span>
+                                 	 </span>
+                                 	 <span class="slider_point slider_point_0" data-id = "0"></span>
+                                 	 <span class="slider_point slider_point_1" data-id = "1"></span>
+                                 	 <span class="slider_point slider_point_2" data-id = "2"></span>
+								 	 <span class="kezdo_ar">11 760 Ft</span>
+                                 	<span class="vegso_ar">64 560 Ft</span>
+
+                                 	 <input id="own_slider" type="range" min="0" max="2" value="0">
+                                 	 <div class="own_tooltip ">
+                                 	 	<p class="tooltip_top">0 Ft kezdőrészlet</p>
+	                                 	<p class="tooltip_center">+24x<span>490</span> Ft/hó</p>
+	                                 	<p class="tooltip_bottom">Teljes ár: <span>11 760</span>Ft</p>
+	                                 	<p class="tooltip_egyosszeg"><span>11 760</span> Ft</p>
+	                                 	<div class="tooltip_arrow tooltip-arrow"></div>
+                                 	 </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+
+                            <img class="internet" src="img/internet.png">
+                            <div class="container">
+                              <div class="price-slider">
+                                <div class="col-sm-12">
+							<div id="slider_holder2">
+                                 	 <span class="marker2">
+                                 	 	<span class="glyphicon glyphicon-triangle-left" style="margin-right:-2px;margin-left:2px;"></span>
+                                 	 	<span class="glyphicon glyphicon-triangle-right" style="margin-left:-2px"></span>
+                                 	 </span>
+                                 	 <span class="slider_point2 slider_point_0" data-id = "0"></span>
+                                 	 <span class="slider_point2 slider_point_1" data-id = "1"></span>
+                                 	 <span class="slider_point2 slider_point_2" data-id = "2"></span>
+                                 	 <span class="slider_point2 slider_point_3" data-id = "3"></span>
+                                 	 <span class="slider_point2 slider_point_4" data-id = "4"></span>
+                                 	 <span class="slider_point2 slider_point_5" data-id = "5"></span>
+                                 	 <span class="slider_point2 slider_point_6" data-id = "6"></span>
+                                 	 <span class="slider_point2 slider_point_7" data-id = "7"></span>
+                                 	 <span class="kezdo_ar">1970 Ft</span>
+                                 	 <span class="vegso_ar">5340 Ft</span>
+
+                                 	 <input id="own_slider2" type="range" min="0" max="7" value="5">
+                                 	 <div class="own_tooltip2 ">
+                                 	 	<p class="tooltip_top2"><span>3840</span> Ft/hó</p>
+                                 	 	<p class="tooltip_bottom2_0">Move M díjcsomag</p>
+                                 	 	<p class="tooltip_bottom2_1">500 MB</p>
+                                 	 	<p class="tooltip_bottom2_2">internet</p>
+                                 	 	<p class="tooltip_bottom2_3">100%-ban felhasználható</p>
+	                                 	<p class="tooltip_bottom2_4">havi díj</p>
+	                                 	<div class="tooltip_arrow2 tooltip-arrow"></div>
+                                 	 </div>
+                                  </div>
+							</div></div></div>
+              <div class="col-sm-12 bottom">
+                <div style="border-top: none" class="col-md-6 atvetelkor">
+                  <h2 class="n5">Átvételkor fizetendő:</h2>
+                  <h2 class="price price_final"><span>0</span> Ft</h2>
+                  <p>készülékár -kezdőrészlet</p>
+                  <button class="button-green">Kosárba rakom</button>
+
+                </div>
+                <div style="border-top: none" class="col-md-6 havonta">
+                  <h2 class="n5">Havonta fizetendő összesen:</h2>
+                  <h2 class="price price_month"><span>4330</span> Ft/hó</h2>
+                   <p><span class="torlesztoreszlet">készülék törlesztőrészlet +</span> díjcsomag havi díj</p>
+                  <button class="details" data-toggle="collapse" data-target="#demo2">Részletek</button>
+
+                  <div id="demo2" class="collapse">
+                    <div class="reszletek_keszulek_main"> <span class="reszletek_keszulek">490</span> Ft/hó készülék részlet +<br></div>
+               <span class="reszletek_havi">3840</span> Ft/hó havi díj
+                  </div>
+
+                </div>
+              </div>
+                          </div>
+
+                				</div>
+                				<div class="tab-pane" id="2">
+                          <img src="img/exsisting.png">
+                				</div>
+                        <div class="tab-pane" id="3">
+                          <img src="img/domino_h.png">
+                				</div>
+                        <div class="tab-pane" id="4">
+                          <img src="img/without_h.png">
+
+                				</div>
+
+                			</div>
+
+                  </div>
+
+
+
+              </div>
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <img src="img/bottom.jpg">
+        </img>
+
+
+
+    </body>
+
+
+<!-- FOOTER-->
+
+
+    <footer>
+    </footer>
