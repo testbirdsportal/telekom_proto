@@ -7,10 +7,10 @@ $(function(){
 	change_helper2();
 	last_tooltip();
 	change_ar();
-	
+
 });
 
-var valSlider2 = [0, 490,1690,2690];
+var valSlider2 = [0, 490,1990,2690];
 var valSlider = [1970, 1970, 2610, 3410, 3470, 3840, 5310,5340,7810,14810,19440];
 
 var text0 = ['Fun S Aranytárskártya díjcsomag','Move XS díjcsomag','Like S díjcsomag','Move S díjcsomag','Eco Surf díjcsomag','Move M Aranytárskártya díjcsomag','Next S Aranytárskártya 2 év hűséggel díjcsomag','Move M díjcsomag','Next S 2 év hűséggel készülékkel díjcsomag','Next M 2 év hűséggel készülékkel díjcsomag','Next XL 2 év hűséggel díjcsomag'];
@@ -31,9 +31,9 @@ var text5 = [
 	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/next-dijcsomagok/next-m',
 	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/next-dijcsomagok/next-xl'
 	];
-		
+
 function slider(){
-	$('#own_slider').change(function() { 
+	$('#own_slider').change(function() {
     	modifyText(valSlider2,this.value);
     	move_tooltip(this.value);
 	});
@@ -52,7 +52,7 @@ function modifyText(valSlider,value){
 }
 
 function slider2(){
-	$('#own_slider2').change(function() { 
+	$('#own_slider2').change(function() {
 		modifyText2(valSlider,text0,text1,text2,text3,text4,this.value);
     	move_tooltip2(this.value);
 	});
@@ -69,19 +69,19 @@ function modifyText2(valSlider,text0,text1,text2,text3,text4,value){
 	var p5 = text5[value];
 
 	var full = full;
-	single = numberParser(single);	
-	
+	single = numberParser(single);
+
 	$('h2.dijcsomag_neve').html(p0);
 	$('h2.dijcsomag_ara span').html(numberParser(single));
 	$('li.dijcsomag_leiras').html(p3+' '+p4);
-	
+
     $('.own_tooltip2 .tooltip_top2 span').html(numberParser(single));
     $('.own_tooltip2 .tooltip_bottom2_0').html(p0);
     $('.own_tooltip2 .tooltip_bottom2_1').html(p1);
     $('.own_tooltip2 .tooltip_bottom2_2').html(p2);
     $('.own_tooltip2 .tooltip_bottom2_3').html(p3);
     $('.own_tooltip2 .tooltip_bottom2_4').html(p4);
-    
+
     $('a.dijcsomag_ismerteto').prop('href',p5);
 }
 
@@ -97,15 +97,15 @@ function numberParser(num){
 					var megvan = Math.floor(num/i);
 					array.push(megvan);
 					//console.log(megvan);
-					num -= Math.floor(megvan*i);	
+					num -= Math.floor(megvan*i);
 					//console.log('--');
 			}
-			
+
 		}
 		array.push(num);
 		//console.log(array);
 		$.each(array,function(key,value){
-			if(key < array.length - 1 ){	
+			if(key < array.length - 1 ){
 				string += value + ' ';
 			}else{
 				string += value;
@@ -141,29 +141,29 @@ function move_tooltip(point,bool = true){
 		$('.own_tooltip').css('left',maradek+'px');
 		$('.marker').css('left',parseInt(left)-10+'px');
 	}
-	
+
 
 	var b = 0;
 	if(point == 0){
 	    b = 8;
 	}
 	else if(point == 1){
-	    b = 5;   
+	    b = 5;
 	}
 	else if(point == 2){
-	    b = 2;   
+	    b = 2;
 	}
 	else if(point == 3){
-	    b = 1;   
+	    b = 1;
 	}
 	console.log('also: '+b);
-	console.log('felso: '+point);	
+	console.log('felso: '+point);
 	console.log('---');
 	if(bool == true){
-		
+
 		modifyText2(valSlider,text0,text1,text2,text3,text4,b);
 	    move_tooltip2(b,false);
-	    
+
 	    var price = setPrice(point,b);
 	    var ertek = $('input[name="ar"]:checked').val();
 	    if(ertek == 'egy_osszegben'){
@@ -172,13 +172,13 @@ function move_tooltip(point,bool = true){
 		    $('h2.price_month span').html(havi);
 		    $('h2.price_final span').html(keszulekar);
 		    $('p.top_egyosszeg span').html(keszulekar);
-		    
+
 		    $('.reszletek_keszulek').html();
 		    $('.reszletek_keszulek_main').hide();
 		    $('.reszletek_havi').html(havi);
 	    }else{
 		    $('h2.price_month span').html(price);
-		    
+
 		    var havi = getAlsoAr(point);
 	    	var keszulekar = getFelsoAr(b);
 	    	keszulekar = keszulekar.replace(' ', '')/24;
@@ -188,7 +188,7 @@ function move_tooltip(point,bool = true){
 	    }
 	}
 	else{
-		
+
 		var price = setPrice(point,b);
 	    var ertek = $('input[name="ar"]:checked').val();
 	    if(ertek == 'egy_osszegben'){
@@ -197,13 +197,13 @@ function move_tooltip(point,bool = true){
 		    $('h2.price_month span').html(havi);
 		    $('h2.price_final span').html(keszulekar);
 		    $('p.top_egyosszeg span').html(keszulekar);
-		      
+
 		    $('.reszletek_keszulek').html();
 		    $('.reszletek_keszulek_main').hide();
 		    $('.reszletek_havi').html(havi);
 	    }else{
 		    $('h2.price_month span').html(price);
-		    
+
 		    var havi = getAlsoAr(point);
 	    	var keszulekar = getFelsoAr(b);
 	    	keszulekar = keszulekar.replace(' ', '')/24;
@@ -212,13 +212,13 @@ function move_tooltip(point,bool = true){
 		    $('.reszletek_havi').html(havi);
 	    }
 
-	}	
-	
+	}
+
 }
 
 //felső csúszka árát adja meg
 function getFelsoAr(felso){
-	var a =  [0, 490,1690,2690];
+	var a =  [0, 490,1990,2690];
 	return numberParser(24*a[felso]);
 }
 //alsó csúszka értékét adja meg
@@ -228,7 +228,7 @@ function getAlsoAr(also){
 }
 
 function setPrice(felso,also){
-	var a = [0, 490,1690,2690];
+	var a = [0, 490,1990,2690];
 	var b = [1970, 1970, 2610, 3410, 3470, 3840, 5310,5340,7810,14810,19440];
 //	console.log(numberParser(a[felso]+b[also]));
 //	console.log(a[felso]+b[also]);
@@ -261,13 +261,13 @@ function move_tooltip2(point,bool = true){
 		$('.own_tooltip2').css('left',maradek+'px');
 		$('.marker2').css('left',parseInt(left)-10+'px');
 	}
-	
+
 	var b = 0;
 	if(point ==0 || point == 1){
 	   b = 3;
 	}
 	else if(point == 2 || point == 3 || point == 4){
-	   b = 2; 
+	   b = 2;
 	}else if(point == 5 || point == 6 || point == 7){
 		b = 1
 	}else{
@@ -275,7 +275,7 @@ function move_tooltip2(point,bool = true){
 	}
 	//ez kell, különben folyamatosan mozgatja a két slider egymást
 	if(bool == true){
-		
+
 		modifyText(valSlider2,b);
 		move_tooltip(b,false);
 		var price = setPrice(b,point);
@@ -286,14 +286,14 @@ function move_tooltip2(point,bool = true){
 		    $('h2.price_month span').html(havi);
 		    $('h2.price_final span').html(keszulekar);
 		    $('p.top_egyosszeg span').html(keszulekar);
-		     
+
 		    $('.reszletek_keszulek').html();
 		    $('.reszletek_keszulek_main').hide();
 		    $('.reszletek_havi').html(havi);
 
 	    }else{
 		    $('h2.price_month span').html(price);
-		    
+
 		    var havi = getAlsoAr(point);
 	    	var keszulekar = getFelsoAr(b);
 	    	keszulekar = keszulekar.replace(' ', '')/24;
@@ -312,20 +312,20 @@ function move_tooltip2(point,bool = true){
 		    $('h2.price_month span').html(havi);
 		    $('h2.price_final span').html(keszulekar);
 		    $('p.top_egyosszeg span').html(keszulekar);
-		    
+
 		     $('.reszletek_keszulek').html();
 		    $('.reszletek_keszulek_main').hide();
 		    $('.reszletek_havi').html(havi);
 	    }else{
-	    
+
 	    	var havi = getAlsoAr(point);
 	    	var keszulekar = getFelsoAr(b);
 	    	keszulekar = keszulekar.replace(' ', '')/24;
 	    	$('.reszletek_keszulek').html(keszulekar);
 		    $('.reszletek_keszulek_main').show();
 		    $('.reszletek_havi').html(havi);
-	    
-	    
+
+
 		    $('h2.price_month span').html(price);
 	    }
 	}
@@ -406,7 +406,7 @@ function change_ar(){
 			$('.top_egyosszeg').show();
 			$('.kezdoreszlet').hide();
 		}
-		
+
 		else if(ertek == 'reszlet'){
 			window.location.replace("huawei_reszlet.html");
 			/*$('.tooltip_egyosszeg, .tooltip_egyosszeg span').hide();
