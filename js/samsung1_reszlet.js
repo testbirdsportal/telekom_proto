@@ -17,6 +17,16 @@ var valSlider = [1970, 1970, 2610, 3410, 3470, 3840, 5340, 17810];
 	var text2 = ['internet','internet','internet','internet','internet','internet','internet','internet','internet','internet','internet','internet'];
 	var text3 = ['100%-ban felhasználható','100%-ban lebeszélhető','100%-ban lebeszélhető','100%-ban felhasználható','100%-ban lebeszélhető','100%-ban felhasználható','100%-ban felhasználható','Korlátlan beszélgetés és SMS'];
 	var text4 = ['havi díj','és felhasználható SMS-ekre belföldön','és felhasználható SMS-ekre belföldön','havi díj','és felhasználható SMS-ekre belföldön','havi díj','havi díj','belföldön'];
+	var text5 = [
+	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/move-dijcsomagok/move-xs',
+	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/fun-s-atk',
+	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/like-s',
+	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/like-s',
+	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/move-dijcsomagok/move-s',
+	'http://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/eco-dijcsomagok/eco-surf',
+	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/move-dijcsomagok/move-m-atk',
+	'https://www.telekom.hu/lakossagi/szolgaltatasok/mobil/havi-dijas-mobil-dijcsomagok/move-dijcsomagok/move-m',
+	];
 
 function slider(){
 	$('#own_slider').change(function() { 
@@ -52,6 +62,7 @@ function modifyText2(valSlider,text0,text1,text2,text3,text4,value){
 	var p2 = text2[value];
 	var p3 = text3[value];
 	var p4 = text4[value];
+	var p5 = text5[value];
 
 	var full = full;
 	single = numberParser(single);	
@@ -66,6 +77,8 @@ function modifyText2(valSlider,text0,text1,text2,text3,text4,value){
     $('.own_tooltip2 .tooltip_bottom2_2').html(p2);
     $('.own_tooltip2 .tooltip_bottom2_3').html(p3);
     $('.own_tooltip2 .tooltip_bottom2_4').html(p4);
+    
+    $('a.dijcsomag_ismerteto').prop('href',p5);
 }
 
 
